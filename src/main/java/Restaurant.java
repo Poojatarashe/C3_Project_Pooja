@@ -72,6 +72,23 @@ public class Restaurant {
     }
 
 
+    List <String> itemNames = new ArrayList<>();
+    public int calculateOrderValue(List<String>itemNames){
+
+    List<Item> items = new ArrayList<>();
+    int sumOfPrice = 0;
+    //DELETE ABOVE STATEMENT AND WRITE CODE HERE
+        for (Item item: items) {
+        if (item.getName().equals(itemNames)) {
+            return item.getPrice();
+        }
+        sumOfPrice += item.getPrice();
+
+    }
+        return sumOfPrice;
+}
+
+
 
 }
 
