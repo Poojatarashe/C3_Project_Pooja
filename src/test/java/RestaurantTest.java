@@ -100,7 +100,5 @@ class RestaurantTest {
         assertEquals(338,restaurant.calculateOrderValue(" Vegetable lasagne"));
 
 
-        }
-
-
     }
+}
