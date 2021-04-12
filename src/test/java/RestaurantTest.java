@@ -3,15 +3,18 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+import static org.mockito.Mockito.when;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 import java.time.LocalTime;
+import java.util.Collections;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class RestaurantTest {
     Restaurant restaurant;
     //REFACTOR ALL THE REPEATED LINES OF CODE
-
+@ExtendWith({MockitoExtension.class})
     @BeforeEach
     public void setup(){
         LocalTime openingTime = LocalTime.parse("10:30:00");
@@ -84,4 +87,20 @@ class RestaurantTest {
                 ()->restaurant.removeFromMenu("French fries"));
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-}
+
+    @Test
+    public void calculate_order_value_should_return_total_order_value(){
+
+        Item item = Mockito.spy(Item.class);
+
+        restaurant.calculateOrderValue("Vegetable lasagne");
+
+
+        assertEquals(119,restaurant.calculateOrderValue("Sweet corn soup"));
+        assertEquals(338,restaurant.calculateOrderValue(" Vegetable lasagne"));
+
+
+        }
+
+
+    }
